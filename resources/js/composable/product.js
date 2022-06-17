@@ -16,8 +16,11 @@ export default function useProduct() {
     const storeProduct = async () => {
         errors.value = {}
         try {
-            await axios.post('/api/product', product.value)
-            await router.push({name: 'product.index'})
+            const response = await axios.post('/api/product', product.value)
+            await router.push({
+                name: 'product.show',
+                params: {id: response.data.data.id}
+            })
         } catch (e) {
             await handleException(e)
         }

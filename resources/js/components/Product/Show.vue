@@ -1,5 +1,8 @@
 <template>
   <div class="card">
+    <div class="card-header">
+      <router-link class="btn btn-primary" :to="{name: 'product.index'}">Product list</router-link>
+    </div>
     <div class="card-body">
       <table class="table table-borderless">
         <tbody>
