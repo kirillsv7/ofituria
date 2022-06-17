@@ -22,6 +22,15 @@ cp .env.example .env
 
 Visit http://localhost
 
+API REST:
+```
+Index GET: /api/product
+Store POST: /api/product
+Show GET: /api/product/{id}
+Update PUT: /api/product/{id}
+Destroy: DELETE: /api/product/{id}
+```
+
 Stop app:
 
 ```
