@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-body">
-      <Form :product="product"/>
+      <Form :product="product" :errors="errors"/>
     </div>
     <div class="card-footer">
       <button class="btn btn-primary" @click="storeProduct()">Save</button>
@@ -16,11 +16,12 @@ import useProduct from "../../composable/product";
 export default {
   components: {Form},
   setup() {
-    const {product, storeProduct} = useProduct()
+    const {product, storeProduct, errors} = useProduct()
 
     return {
       product,
-      storeProduct
+      storeProduct,
+      errors
     }
   }
 }

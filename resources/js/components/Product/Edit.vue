@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-body">
-      <Form :product="product"/>
+      <Form :product="product" :errors="errors"/>
     </div>
     <div class="card-footer">
       <button class="btn btn-primary" @click="updateProduct(product.id)">Save</button>
@@ -24,13 +24,14 @@ export default {
 
   components: {Form},
   setup(props) {
-    const {product, getProduct, updateProduct} = useProduct()
+    const {product, getProduct, updateProduct, errors} = useProduct()
 
     onMounted(getProduct(props.id))
 
     return {
       product,
-      updateProduct
+      updateProduct,
+      errors
     }
   }
 }

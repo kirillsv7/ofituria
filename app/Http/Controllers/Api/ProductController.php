@@ -32,9 +32,9 @@ class ProductController extends Controller
 
     public function update(ProductUpdateRequest $request, Product $product): ProductResource
     {
-        return new ProductResource(
-            $product->update($request->validated())
-        );
+        $product->update($request->validated());
+
+        return new ProductResource($product);
     }
 
 
