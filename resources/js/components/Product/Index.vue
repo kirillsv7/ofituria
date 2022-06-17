@@ -9,7 +9,7 @@
         <tr>
           <th>ID</th>
           <th class="w-25">Name</th>
-          <th class="w-50">Description</th>
+          <th>Description</th>
           <th>Price</th>
           <th>Created / Updated</th>
           <th>Actions</th>
@@ -29,7 +29,7 @@
             <span class="text-nowrap">{{ product.created_at }}</span><br>
             <span class="text-nowrap">{{ product.updated_at }}</span>
           </td>
-          <td>
+          <td class="text-nowrap">
             <router-link class="btn btn-secondary me-1" :to="{name: 'product.edit', params: {id: product.id}}">Edit
             </router-link>
             <button class="btn btn-light" @click="deleteProduct(product.id)">Delete</button>
