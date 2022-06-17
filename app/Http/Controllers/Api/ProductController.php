@@ -3,62 +3,45 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Api\ProductStoreRequest;
+use App\Http\Requests\Api\ProductUpdateRequest;
+use App\Http\Resources\Api\ProductResource;
+use App\Models\Product;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Response;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(): AnonymousResourceCollection
     {
-        //
+        return ProductResource::collection(Product::all());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(ProductStoreRequest $request): ProductResource
     {
-        //
+        return new ProductResource(
+            Product::query()
+                   ->create($request->validated())
+        );
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Product $product): ProductResource
     {
-        //
+        return new ProductResource($product);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(ProductUpdateRequest $request, Product $product): ProductResource
     {
-        //
+        return new ProductResource(
+            $product->update($request->validated())
+        );
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public function destroy(Product $product): Response
     {
-        //
+        $product->delete();
+
+        return response()->noContent();
     }
 }
