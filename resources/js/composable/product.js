@@ -31,7 +31,10 @@ export default function useProduct() {
         errors.value = {}
         try {
             await axios.put(`/api/product/${id}`, product.value)
-            await router.push({name: 'product.edit'})
+            await router.push({
+                name: 'product.show',
+                params: {id}
+            })
         } catch (e) {
             await handleException(e)
         }

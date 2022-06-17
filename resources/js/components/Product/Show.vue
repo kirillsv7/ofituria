@@ -30,6 +30,9 @@
         </tbody>
       </table>
     </div>
+    <div class="card-footer">
+      <router-link class="btn btn-primary" :to="{name: 'product.edit', params: {id: product.id}}">Edit</router-link>
+    </div>
   </div>
 </template>
 
