@@ -11,7 +11,7 @@
           <th class="w-25">Name</th>
           <th class="w-50">Description</th>
           <th>Price</th>
-          <th></th>
+          <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -25,7 +25,8 @@
           <td>{{ product.description }}</td>
           <td>{{ product.price }}</td>
           <td>
-            <button class="btn btn-sm btn-close" @click="deleteProduct(product.id)"></button>
+            <router-link class="btn btn-secondary me-1" :to="{name: 'product.edit', params: {id: product.id}}">Edit</router-link>
+            <button class="btn btn-light" @click="deleteProduct(product.id)">Delete</button>
           </td>
         </tr>
         </tbody>
