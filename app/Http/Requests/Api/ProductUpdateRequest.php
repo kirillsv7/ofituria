@@ -26,7 +26,7 @@ class ProductUpdateRequest extends FormRequest
         return [
             'name'        => ['string', 'required'],
             'description' => ['string'],
-            'price'       => ['numeric', 'required'],
+            'price'       => ['numeric', 'required', 'regex:/^\d{1,6}(\.\d{1,4})?$/'],
         ];
     }
 }
