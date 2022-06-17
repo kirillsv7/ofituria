@@ -16,4 +16,9 @@ class Product extends Model
         'description',
         'price',
     ];
+
+    protected function serializeDate(\DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
 }
